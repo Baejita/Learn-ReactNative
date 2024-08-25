@@ -1,12 +1,14 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React from "react";
+import { Text, View } from "react-native";
+import SearchBar from "../components/SearchBar";
 
 function SearchSceen() {
   return (
     <View>
-        <Text>Search Screen</Text>
+      <SearchBar />
+      <Text>Search Screen</Text>
     </View>
-  )
+  );
 }
 
-export default SearchSceen
+export default SearchSceen;
