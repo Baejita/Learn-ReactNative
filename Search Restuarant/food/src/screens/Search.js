@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import SearchBar from "../components/SearchBar";
 import useResults from "../hooks/useResults";
 import ResultList from "../components/ResultList";
 
-function SearchSceen() {
+function SearchSceen({ navigation }) {
   const [term, setTerm] = useState("");
   const [searchApi, results, errorMessage] = useResults();
 
@@ -14,13 +14,27 @@ function SearchSceen() {
   };
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <SearchBar term={term} onTermChage={setTerm} onTermSubmit={searchApi} />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      <Text>We have found {results.length}</Text>
-      <ResultList results={filterResultsByPrice("$")} title="Cost Effective" />
-      <ResultList results={filterResultsByPrice("$$")} title="Bit Pricier" />
-      <ResultList results={filterResultsByPrice("$$$")} title="Big spender" />
+      {/* <Text>We have found {results.length}</Text> */}
+      <ScrollView>
+        <ResultList
+          navigation={navigation}
+          results={filterResultsByPrice("$")}
+          title="Cost Effective"
+        />
+        <ResultList
+          navigation={navigation}
+          results={filterResultsByPrice("$$")}
+          title="Bit Pricier"
+        />
+        <ResultList
+          navigation={navigation}
+          results={filterResultsByPrice("$$$")}
+          title="Big spender"
+        />
+      </ScrollView>
     </View>
   );
 }
