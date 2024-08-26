@@ -1,11 +1,11 @@
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 function ResultDetails({ result }) {
   return (
     <View>
       <Image style={styles.image} source={{ uri: result.image_url }} />
-      <Text style={styles.name}>{result.name}</Text>
+      <Text style={styles.name}>{result.title}</Text>
       <Text>
         {result.rating} Stars, {result.review_count} Reviews
       </Text>

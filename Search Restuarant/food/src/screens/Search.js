@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import SearchBar from "../components/SearchBar";
 import useResults from "../hooks/useResults";
 import ResultList from "../components/ResultList";
@@ -8,9 +8,9 @@ function SearchSceen({ navigation }) {
   const [term, setTerm] = useState("");
   const [searchApi, results, errorMessage] = useResults();
 
-  const filterResultsByPrice = (price) => {
+  const filterResultsByPrice = (completed) => {
     // price === '$' || '$$$" || '$$"
-    return results.filter((results) => results.price === price);
+    return results.filter((results) => results.completed === completed);
   };
 
   return (
@@ -21,13 +21,13 @@ function SearchSceen({ navigation }) {
       <ScrollView>
         <ResultList
           navigation={navigation}
-          results={filterResultsByPrice("$")}
-          title="Cost Effective"
+          results={filterResultsByPrice(true)}
+          title="อ่านเสร็จแล้ว"
         />
         <ResultList
           navigation={navigation}
-          results={filterResultsByPrice("$$")}
-          title="Bit Pricier"
+          results={filterResultsByPrice(false)}
+          title="ยังไม่ได้อ่าน"
         />
         <ResultList
           navigation={navigation}

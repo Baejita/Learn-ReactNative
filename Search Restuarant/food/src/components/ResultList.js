@@ -8,6 +8,7 @@ function ResultList({ title, results, navigation }) {
     <View>
       <Text style={styles.textTitle}>{title}</Text>
       <FlatList
+        style={styles.container}
         horizontal
         showsHorizontalScrollIndicator={false}
         data={results}
@@ -27,6 +28,11 @@ function ResultList({ title, results, navigation }) {
 const styles = StyleSheet.create({
   textTitle: {
     fontWeight: "bold",
+  },
+  container: {
+    marginBottom: 50,
+    fontWeight: "bold",
+    backgroundColor: "orange",
   },
 });
 

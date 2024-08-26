@@ -7,21 +7,20 @@ export default () => {
   const searchApi = async (searchTerm) => {
     console.log("Hi there!");
     try {
-      const response = await yelp.get("/search", {
-        params: {
-          limit: 50,
-          term: searchTerm,
-          location: "san jose",
-        },
-      });
-      setResults(response.data.businesses);
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/todos"
+      );
+
+      const data = await response.json();
+
+      setResults(data);
     } catch (error) {
       seteErrorMessage("Something went wrong");
     }
   };
 
   useEffect(() => {
-    searchApi("pasta");
+    searchApi("title");
   }, []);
   return [searchApi, results, errorMessage];
 };
