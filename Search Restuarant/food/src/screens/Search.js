@@ -20,20 +20,14 @@ function SearchSceen({ navigation }) {
       {/* <Text>We have found {results.length}</Text> */}
       <ScrollView>
         <ResultList
-          navigation={navigation}
           results={filterResultsByPrice(true)}
           title="อ่านเสร็จแล้ว"
         />
         <ResultList
-          navigation={navigation}
           results={filterResultsByPrice(false)}
           title="ยังไม่ได้อ่าน"
         />
-        <ResultList
-          navigation={navigation}
-          results={filterResultsByPrice("$$$")}
-          title="Big spender"
-        />
+        <ResultList results={filterResultsByPrice("$$$")} title="Big spender" />
       </ScrollView>
     </View>
   );
