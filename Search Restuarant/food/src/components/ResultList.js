@@ -4,7 +4,7 @@ import ResultDetails from "./ResultDetails";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { withNavigation } from "react-navigation";
 
-function ResultList({ title, results }) {
+function ResultList({ title, results, navigation }) {
   return (
     <View>
       <Text style={styles.textTitle}>{title}</Text>
@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: 50,
     fontWeight: "bold",
-    backgroundColor: "orange",
   },
 });
 
