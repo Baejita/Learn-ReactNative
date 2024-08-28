@@ -3,7 +3,7 @@ import { Image, StyleSheet, Text, View } from "react-native";
 
 function ResultDetails({ result }) {
   return (
-    <View>
+    <View style={styles.contianer}>
       <Image style={styles.image} source={{ uri: result.image_url }} />
       <Text style={styles.name}>{result.title}</Text>
       <Text>
@@ -16,6 +16,7 @@ function ResultDetails({ result }) {
 const styles = StyleSheet.create({
   contianer: {
     marginLeft: 10,
+    backgroundColor: "orange",
   },
   image: {
     width: 250,

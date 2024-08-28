@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: 50,
     fontWeight: "bold",
-    backgroundColor: "orange",
   },
 });
 
