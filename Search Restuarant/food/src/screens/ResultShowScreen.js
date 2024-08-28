@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 
-function ResultShowScreen({ navigation }) {
+function ResultShowScreen({ route }) {
   const [result, setResult] = useState(null);
-  const id = navigation.getParam("id");
+  const id = route.params.id;
 
   const getResult = async (id) => {
     const response = await fetch(

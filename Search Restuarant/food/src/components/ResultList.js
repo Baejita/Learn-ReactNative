@@ -2,9 +2,10 @@ import React from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import ResultDetails from "./ResultDetails";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { withNavigation } from "react-navigation";
+import { useNavigation } from "@react-navigation/native";
 
 function ResultList({ title, results }) {
+  const navigate = useNavigation();
   if (!results.length) {
     return null;
   }
@@ -41,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withNavigation(ResultList);
+export default ResultList;
