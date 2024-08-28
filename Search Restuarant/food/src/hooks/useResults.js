@@ -5,7 +5,6 @@ export default () => {
   const [errorMessage, seteErrorMessage] = useState("");
 
   const searchApi = async (searchTerm) => {
-    console.log("Hi there!");
     try {
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/todos"

@@ -5,6 +5,9 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { withNavigation } from "react-navigation";
 
 function ResultList({ title, results }) {
+  if (!results.length) {
+    return null;
+  }
   return (
     <View>
       <Text style={styles.textTitle}>{title}</Text>
@@ -16,7 +19,9 @@ function ResultList({ title, results }) {
         keyExtractor={(results) => results.id}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={() => navigation.navigate("ResultShow")}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("ResultShow", { id: item.id })}
+            >
               <ResultDetails result={item} />
             </TouchableOpacity>
           );
