@@ -44,12 +44,13 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       marginHorizontal: 10,
       alignItems: 'center',
-      paddingVertical: 6,
+      paddingVertical: 30,
       borderTopWidth: 1,
       borderColor: 'grey'
     },
     trash: {
-      fontSize: 16
+      fontSize: 24,
+      paddingRight:10
     }
 
 })
