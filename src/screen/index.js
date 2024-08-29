@@ -1,9 +1,13 @@
 import React, { useContext } from 'react'
-import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Button, FlatList, StyleSheet, Text, TouchableOpacity,  View } from 'react-native'
 import {Context} from '../context/BlogProvider'
 
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-function index() {
+import Feather from '@expo/vector-icons/Feather';
+
+
+function index({navigation}) {
+ 
     const {state, addBlogPost , deleteBlogPost} = useContext(Context)
   return (
     <View>
@@ -15,7 +19,8 @@ function index() {
         keyExtractor={(blogpost)=> blogpost.title }
         renderItem={({item})=> {
 
-            return <View style={styles.row}>
+            return <TouchableOpacity onPress={()=> navigation.navigate('Show', {id: item.id})} >
+            <View style={styles.row}>
               <Text style={styles.text}>{item.title}</Text>
               <Text>{item.id}</Text>
 
@@ -23,12 +28,23 @@ function index() {
               <FontAwesome6 style={styles.trash} name="trash" />
               </TouchableOpacity>
               </View>
+              </TouchableOpacity>
         }
         
         }
        />
     </View>
   )
+}
+
+index.navigationOptions = ({navigation})=> {
+  return {
+    headerRight: () => (
+      <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+        <Feather name="plus" size={30}  style={styles.plus}/>
+      </TouchableOpacity>
+    ),
+  };
 }
 
 const styles = StyleSheet.create({
@@ -51,8 +67,12 @@ const styles = StyleSheet.create({
     trash: {
       fontSize: 24,
       paddingRight:10
+    },
+    plus: {
+      paddingRight: 10
     }
 
 })
 
 export default index
+
