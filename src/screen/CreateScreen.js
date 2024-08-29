@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
-import { Context } from '../context/BlogProvider'
 import { TextInput } from 'react-native-gesture-handler'
+import { Context } from '../context/BlogProvider';
 
-function CreateScreen() {
+function CreateScreen({navigation}) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('')
+   const {addBlogPost} =useContext(Context)
  
   return (
     <View style={styles.view}>
@@ -15,7 +16,11 @@ function CreateScreen() {
         <Text  style={styles.Enter}>Enter Content :</Text>
         <TextInput autoCapitalize={false} style={styles.input} value={content} onChangeText={text => setContent(text)}/>
 
-        <Button title='Add Blog Post'/>
+        <Button title='Add Blog Post' onPress={()=> {
+            addBlogPost(title,content, () => {
+                navigation.navigate('Index')
+            })
+            }}/>
     </View>
   )
 }
@@ -35,7 +40,8 @@ const styles = StyleSheet.create({
         height: 40,
         margin: 20,
         borderRadius: 6,
-        borderColor: 'gray'
+        borderColor: 'gray',
+        paddingLeft: 5
 
     }
 })
