@@ -7,25 +7,27 @@ import ShowScreen from "./src/screen/ShowScreen";
 import CreateScreen from "./src/screen/CreateScreen";
 import EditScreen from "./src/screen/EditScreen";
 
-const navigator = createStackNavigator({
-  Index : index,
-  Show : ShowScreen,
-  Create : CreateScreen,
-  Edit: EditScreen
-
-}, {
-  initialRouteName: "Index", 
-  defaultNavigationOptions : {
-    title: 'Blogs'
+const navigator = createStackNavigator(
+  {
+    Index: index,
+    Show: ShowScreen,
+    Create: CreateScreen,
+    Edit: EditScreen,
+  },
+  {
+    initialRouteName: "Index",
+    defaultNavigationOptions: {
+      title: "Blogs",
+    },
   }
-})
+);
 
-
-const App = createAppContainer(navigator)
-
+const App = createAppContainer(navigator);
 
 export default () => {
-  return <Provider >
-  <App />
-  </Provider>
-}
+  return (
+    <Provider>
+      <App />
+    </Provider>
+  );
+};
