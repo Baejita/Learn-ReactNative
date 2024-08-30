@@ -38,8 +38,9 @@ const getBlockPosts = (dipatch) => {
 };
 
 const addBlogPost = (dispatch) => {
-  return (title, content, callback) => {
-    dispatch({ type: "add_blockPost", payload: { title, content } });
+  return async (title, content, callback) => {
+    await jsonServer.post("/blogPost", title, content);
+    //     dispatch({ type: "add_blockPost", payload: { title, content } });
     if (callback) {
       callback();
     }
@@ -47,13 +48,16 @@ const addBlogPost = (dispatch) => {
 };
 
 const deleteBlogPost = (dispatch) => {
-  return (id) => {
+  return async (id) => {
+    await jsonServer.delete(`/blogPost/${id}`);
     dispatch({ type: "delete_blockPost", payload: id });
   };
 };
 
 const editBlogPost = (dispatch) => {
-  return (id, title, content, callback) => {
+  return async (id, title, content, callback) => {
+    await jsonServer.put(`/blogPost/${id}`, { title, content });
+
     dispatch({ type: "edit_blockPost", payload: { id, title, content } });
     if (callback) {
       callback();
@@ -63,6 +67,6 @@ const editBlogPost = (dispatch) => {
 
 export const { Context, Provider } = createDataContext(
   blogPostReducer,
-  { addBlogPost, deleteBlogPost, editBlogPost },
-  [{ title: "Test Title", content: "Test Content", id: 1 }]
+  { addBlogPost, deleteBlogPost, editBlogPost, getBlockPosts },
+  []
 );
