@@ -3,6 +3,9 @@ import jsonServer from "../api/jsonServer";
 
 const blogPostReducer = (state, action) => {
   switch (action.type) {
+    case "get_blogposts":
+      return [action.payload];
+
     case "delete_blockPost":
       return state.filter((blogpost) => blogpost.id !== action.payload);
 
@@ -24,6 +27,14 @@ const blogPostReducer = (state, action) => {
     default:
       return state;
   }
+};
+
+const getBlockPosts = (dipatch) => {
+  return async () => {
+    const response = await jsonServer.get("/blogPosts");
+    //response.data === [{}, {}, {}, {}, {}, {}, {}, {}, {}]
+    dipatch({ type: "get_blogposts", payload: response.data });
+  };
 };
 
 const addBlogPost = (dispatch) => {
