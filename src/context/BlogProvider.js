@@ -39,14 +39,10 @@ const getBlockPosts = (dipatch) => {
 
 const addBlogPost = (dispatch) => {
   return async (title, content, callback) => {
-<<<<<<< HEAD
     await jsonServer.post("/blockPost", { title, content });
 
     // dispatch({ type: "add_blockPost", payload: { title, content } });
-=======
-    await jsonServer.post("/blogPost", title, content);
-    //     dispatch({ type: "add_blockPost", payload: { title, content } });
->>>>>>> 9aba740928ca19babe992a038888fec1a9cc52a6
+
     if (callback) {
       callback();
     }
