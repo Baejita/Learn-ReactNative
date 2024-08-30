@@ -18,21 +18,11 @@ function index({ navigation }) {
   useEffect(() => {
     getBlockPosts();
 
-<<<<<<< HEAD
     const listener = navigation.addListener("didFocus", () => getBlockPosts());
 
     return () => {
       listener.remove();
     }; // Stop listening when the screen is unmounted
-=======
-    const listener = navigation.addListener("didFocus", () => {
-      getBlockPosts();
-    });
-
-    return () => {
-      listener.remove();
-    };
->>>>>>> 9aba740928ca19babe992a038888fec1a9cc52a6
   }, []);
   return (
     <View>
