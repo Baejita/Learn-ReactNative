@@ -29,7 +29,7 @@ const blogPostReducer = (state, action) => {
   }
 };
 
-const getBlockPosts = (dipatch) => {
+const getBlogPosts = (dipatch) => {
   return async () => {
     const response = await jsonServer.get("/blockPost");
     //response.data === [{}, {}, {}, {}, {}, {}, {}, {}, {}]
@@ -69,6 +69,6 @@ const editBlogPost = (dispatch) => {
 
 export const { Context, Provider } = createDataContext(
   blogPostReducer,
-  { addBlogPost, deleteBlogPost, editBlogPost, getBlockPosts },
+  { addBlogPost, deleteBlogPost, editBlogPost, getBlogPosts },
   []
 );
