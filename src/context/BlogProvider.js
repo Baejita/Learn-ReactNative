@@ -39,9 +39,14 @@ const getBlockPosts = (dipatch) => {
 
 const addBlogPost = (dispatch) => {
   return async (title, content, callback) => {
+<<<<<<< HEAD
     await jsonServer.post("/blockPost", { title, content });
 
     // dispatch({ type: "add_blockPost", payload: { title, content } });
+=======
+    await jsonServer.post("/blogPost", title, content);
+    //     dispatch({ type: "add_blockPost", payload: { title, content } });
+>>>>>>> 9aba740928ca19babe992a038888fec1a9cc52a6
     if (callback) {
       callback();
     }
@@ -49,13 +54,16 @@ const addBlogPost = (dispatch) => {
 };
 
 const deleteBlogPost = (dispatch) => {
-  return (id) => {
+  return async (id) => {
+    await jsonServer.delete(`/blogPost/${id}`);
     dispatch({ type: "delete_blockPost", payload: id });
   };
 };
 
 const editBlogPost = (dispatch) => {
-  return (id, title, content, callback) => {
+  return async (id, title, content, callback) => {
+    await jsonServer.put(`/blogPost/${id}`, { title, content });
+
     dispatch({ type: "edit_blockPost", payload: { id, title, content } });
     if (callback) {
       callback();
